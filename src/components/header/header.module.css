@@ -1,0 +1,24 @@
+.btnGap{
+    display: flex;
+    gap: 10px;
+}
+.Link{
+    text-decoration: none;
+    color: white;
+}
+.header{
+    display: flex;
+    min-width: 1135px;
+    margin: auto;
+}
+.profileBox{
+    display: flex;
+    gap: 15px
+}
+.userInfo p , h5{
+    margin : 2px 5px 0 5px;
+}
+.userInfo p{
+    font-size: 12px;
+    text-align: end;
+}

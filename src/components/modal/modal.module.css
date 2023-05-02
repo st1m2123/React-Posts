@@ -1,0 +1,11 @@
+.modalInputs{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contentBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

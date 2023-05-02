@@ -1,0 +1,37 @@
+.postCard{
+    width: 350px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+img{
+    width: 350px;
+}
+.postList{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px 50px;
+}
+.avatarImg{
+    width: 60px;
+}
+.CardListBlock{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.upperNav{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.caseTags{
+    display: flex;
+    
+}
+.bottomNav{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}

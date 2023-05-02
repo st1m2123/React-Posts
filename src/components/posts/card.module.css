@@ -1,0 +1,36 @@
+.card{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.btnLike{
+    margin: 0;
+    padding: 0;
+    height: 45px;
+}
+.btnFlex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+.btnMore{
+    text-decoration: none;
+    color: white;
+    background: #1976d2;
+    height: 30px;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+.Liked{
+    color: red;
+    margin: 0;
+    padding: 0;
+    height: 45px;
+}
+.iconBtn{
+    height: 45px;
+}
+.bottomNav{
+margin-top: 25px;
+background-color: #1976d2   ;
+}

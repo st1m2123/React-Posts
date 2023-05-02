@@ -1,0 +1,190 @@
+.userAvatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+}
+.profilePhoto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.postBox{
+    display: flex;
+    width: 955px;
+    margin: auto;
+    margin-top: 35px;
+    padding: 20px;
+}
+.rightInfo{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 600px;
+}
+.leftInfo{
+
+}
+.stateBox{
+    display: flex;
+    width: 955px;
+    margin: auto;
+    flex-direction: column;
+}
+.userComment{
+display: flex;
+gap: 5px;
+}
+.userComment>*{
+    margin: 0;
+}
+.userLiked{
+    color: red
+}
+.tags{
+    color: aliceblue;
+    background-color: #1976d2;
+    padding: 3px 5px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 19px;
+}
+.caseTags{
+    display: grid;
+    grid-template-rows: min-content;
+    grid-template-columns: auto auto auto auto;
+    padding: 15px;
+    gap: 5px;
+    margin-right: auto;
+}
+.caseTags p{
+    margin: 0;
+}
+.commentForm{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+.commentForm :first-child{
+    width: 1000px;
+    min-width: 100px;
+}
+.btn{
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    color: inherit;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border: 1px solid rgba(25, 118, 210, 0.5);
+    color: #1976d2;
+}
+.delBtn{
+    display: flex;
+    gap: 10px;
+    border: #1976d2 solid 1px;
+    width: 90px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    color: #1976d2;
+    cursor: pointer;
+    height: 25px;
+}
+.delBtn p{
+    margin: 0;
+}
+.commentBoxUser{
+    display: flex;
+    flex-direction: column;
+}
+.commentBlock{
+    display: flex;
+    justify-content: space-between;
+    border-top: gainsboro 1px solid;
+    padding-top: 20px;
+}
+.profile{
+margin-top: 2px;
+margin-left: 0;
+}
+.profile p, h5 {
+    margin: 0;
+}
+.profilePost{
+display: flex;
+gap: 10px
+}
+.profile  {
+    width: 200px;
+    margin-bottom: 20px;
+}
+.profileUserText>h5, p{
+    margin: 0;
+}
+.profileUserText{
+    margin-top: 7px;
+}
+.postBtns{
+    display: flex;
+    gap: 20px;
+}
+.postBtns div {
+    margin-top: 8px;
+}
+.caseTags h5{
+    margin: 0;
+}
+.postPhoto{
+    border-radius: 8px;
+}
+.postBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.leftBlock{
+    display: flex;
+    flex-direction: column;
+}
+.IconLike{
+    height: 68px;
+}
