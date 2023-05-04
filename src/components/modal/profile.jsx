@@ -31,7 +31,6 @@ export default function BasicModal() {
   const [context, setContext] = React.useContext(Context);
   const [avatar, setAvatar] = React.useState(context.avatar);
   const [editState, setEditState] = React.useState(false);
-  console.log(context);
 
   function onSubmit(data) {
     EditProfile({ "name": data.name, "about": data.about });
@@ -61,7 +60,7 @@ export default function BasicModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Информация вашего профиля
           </Typography>
-          <Avatar sx={{ width: 200, height: 200, margin: 2 }} alt="Remy Sharp" src={avatar}/>
+          <Avatar sx={{ width: 200, height: 200, margin: 2 }} alt="Remy Sharp" src={editState === false? context.avatar :avatar}/>
             {editState === false ? <form className={s.modalInputs}>
               <label>Ваше имя: {context.name}</label>
               <label>О вас: {context.about}</label>

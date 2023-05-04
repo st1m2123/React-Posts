@@ -41,6 +41,7 @@ export default function RecipeReviewCard({Posts}) {
 
   React.useEffect(() => {
     setCountLikes(likesInfo.length)
+    setIsLiked(false);
     for(let i of likesInfo){
     if (i === localStorage.getItem('_id')){
      setIsLiked(true);

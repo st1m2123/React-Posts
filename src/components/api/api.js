@@ -18,7 +18,7 @@ export function SignIn(userData) {
             'content-type': 'application/json'
         },
         body: JSON.stringify(userData)
-    }).then(response => response.json())
+    })
 }
 
 export const GetPost = () => {
@@ -128,7 +128,7 @@ export const SignUp = (UserData) => {
         headers : {
             'content-type': 'application/json',
         }, body: JSON.stringify(UserData)
-}).then(response => response.json())
+})
 }
 
 export const CreatePost = (PostData) => {

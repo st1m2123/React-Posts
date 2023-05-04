@@ -8,6 +8,8 @@ import {SignIn} from '../api/api.js'
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import {Context} from '../context.js'
+import Snackbar from '../snackbar/snackbar.jsx'
+import s from './modal.module.css'
 
 const style = {
   position: 'absolute',
@@ -32,7 +34,13 @@ export default function BasicModal(modalOpen) {
 
   async function onSubmit(data) {
     // console.log(data); 
-   await SignIn(data).then(result => {
+   await SignIn(data).then(response => { 
+    if (response.status !== 200) {
+      setContext ('badLogin')
+    } else {
+      return response.json();
+    }
+  }).then(result => {
       console.log(result);
       localStorage.setItem('token', result.token);
       localStorage.setItem('_id', result.data._id);
@@ -55,21 +63,22 @@ export default function BasicModal(modalOpen) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Войти в учетную запись
           </Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form className={s.modalInputs} onSubmit={handleSubmit(onSubmit)}>
           <TextField
                 id="outlined-password-input"
                 label="Ваш Email"
                 type="text"
                 autoComplete="current-password"
-                {...register('email')}
+                {...register('email', {required: true, pattern:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
               />
               <TextField
                 id="outlined-password-input"
                 label="Ваш пароль"
                 type="password"
                 autoComplete="current-password"
-                {...register('password')}
+                {...register('password', {required: true}) }
               />
+              {context === 'badLogin' ? <p className={s.err}>Проверьте верность введенных данных !</p> : null}
           <Button type="submit">Войти</Button>
           </form>
         </Box>

@@ -9,7 +9,7 @@ const NotFound = ( {children, title, buttonText = "На главную", buttonA
 
 
 	return (
-		<>
+		<div className={s.contentBox}>
 			{Authorization === null ? <div className={s.notFound}>
 				<>
 				<h1 className={s.title}>Добро пожаловать на React Posts <RocketLaunchOutlinedIcon/></h1>
@@ -21,7 +21,7 @@ const NotFound = ( {children, title, buttonText = "На главную", buttonA
 			<h1 className={s.title}>Страница не найдена 404</h1>
 			</>
 		}
-		</>
+		</div>
 	);
 }
 

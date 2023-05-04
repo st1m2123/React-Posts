@@ -3,9 +3,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 350px;
 }
 .contentBox{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.err{
+    color: red;
 }

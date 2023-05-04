@@ -20,7 +20,7 @@ import Stack from '@mui/material/Stack';
 import ModalLogin from '../modal/modalLogin'
 import { GetUserData } from '../api/api'
 import Profile from '../modal/profile'
-import { Context, RequestContext } from "../context"
+import { Context, RequestContext, PageContext } from "../context"
 import Registration from '../modal/modalRegistration'
 import s from "./header.module.css"
 import { Link, NavLink, useNavigate } from 'react-router-dom'
@@ -74,6 +74,7 @@ export default function PrimarySearchAppBar() {
   const [userData, setUserdata] = React.useState([])
   const [context, setContext] = React.useContext(Context);
   const [requestContext,setRequestContext ] = React.useContext(RequestContext);
+  const [pageContext, setPageContext] = React.useContext(PageContext);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -85,7 +86,9 @@ export default function PrimarySearchAppBar() {
 
   const handleSignOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('_id');
     handleMenuClose();
+    setContext("Вышли из аккаунта!");
     navigate('/login')
   }
 
@@ -194,7 +197,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <Link className={s.Link} to='/'>REACT POSTS</Link>
+            <Link className={s.Link} onClick={() => {setPageContext(1)}} to='/'>REACT POSTS</Link>
           </Typography>
           <Search onChange={(e) => {handleTimeOut(e)}}>
             <SearchIconWrapper>

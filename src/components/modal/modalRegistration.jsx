@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import {SignIn, SignUp} from '../api/api.js'
 import TextField from '@mui/material/TextField';
 import s from './modal.module.css'
+import { useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -25,14 +26,23 @@ export default function BasicModal(modalOpen) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [userData, setUserData] = React.useState()
-  const { register, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const [err, setErr] = useState(false);
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     // console.log(data); 
-    SignUp(data).then(result => {
+   await SignUp(data).then(response => {
+      console.log(response);
+      if (response.status !== 201) {
+        setErr (true);
+      } else {
+        setErr(false);
+        handleClose();
+        return response.json();
+      }
+    }).then(result => {
       console.log(result);
     });
-    // { username: 'test', email: 'test', password: 'test' }
   };
 
   return (
@@ -54,23 +64,27 @@ export default function BasicModal(modalOpen) {
                 label="Введи свой Email"
                 type="text"
                 autoComplete="current-password"
-                {...register('email')}
+                {...register('email', {required: true, pattern:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
               />
+              {errors.email?.type === 'required' && <p className={s.err} role="alert">Поле не заполнено</p>}
               <TextField
                 id="outlined-password-input"
                 label="Пароль"
                 type="password"
                 autoComplete="current-password"
-                {...register('password')}
+                {...register('password', {required: true})}
               />
+              {errors.password?.type === 'required' && <p className={s.err} role="alert">Поле не заполнено</p>}
               <TextField
                 id="outlined-password-input"
                 label="Твоя группа"
                 type="text"
+                value='group-10'
                 autoComplete="current-password"
                 {...register('group')}
               />
-          <button type="submit">Зарегистрироваться</button>
+              {err === true? <p className={s.err}>Имэйл занят или неподходящий пароль!</p> : null}
+          <Button type="submit">Зарегистрироваться</Button>
           </form>
         </Box>
       </Modal>

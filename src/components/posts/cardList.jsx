@@ -18,12 +18,12 @@ const CardList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        requestContext === '' ? PaginationPost(pageContext, countPage).then(result => {
+       if (pageContext !== null){ requestContext === '' ? PaginationPost(pageContext, countPage).then(result => {
                 setPosts(result.posts);
                 setPostsLenght(result.total);
             }) : SearchPost(requestContext).then(result => {
                 setPosts(result);
-                console.log(result); })
+                console.log(result); }) }
     }, [pageContext, requestContext]);
 
     const renderPosts = posts.map((el) => {
@@ -45,7 +45,7 @@ const CardList = () => {
             }
         });
         setPosts(favPosts);
-        setPageContext(null)
+        setPageContext(null);
     })};
 
     const handleViewMyPosts = async () => {

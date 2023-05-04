@@ -7,7 +7,7 @@ import Loading from '../elements/loading'
 import Avatar from '@mui/material/Avatar';
 import { useForm } from "react-hook-form";
 import { Context, PostContext } from "../context";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModalEdit from '../modal/modalEditPost'
@@ -26,6 +26,8 @@ import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import dayjs from 'dayjs';
+import Snackbar from '../snackbar/snackbar';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -72,7 +74,7 @@ function PostPage () {
     const [countLikes, setCountLikes] = useState(0);
     let {_id} = useParams();
     const [postContex, setPostContext] = React.useContext(PostContext);
-    // console.log(context._id);
+    const navigate = useNavigate();
 
     useEffect(() => {
         OpenPost(_id).then(result => {setPostContext(result);
@@ -85,8 +87,6 @@ function PostPage () {
                   }}
         );
         GetComment(_id).then(result => {setCommentInfo(result);      });
-        // console.log(likesInfo);
-        // console.log(postInfo);
       }, []);
       function handleDeleteComment(id){
         DeleteComment(_id,id).then(result => setCommentInfo(result.comments));
@@ -94,7 +94,8 @@ function PostPage () {
       
       const comment = commentInfo.map ((e) => {
         console.log(e);
-        return(<div className={s.commentBlock}>
+        return(
+        <div className={s.commentBlock}>
         <div>
         <div className={s.userComment}>
         <Avatar alt="Travis Howard" src={e.author.avatar} />
@@ -113,14 +114,6 @@ function PostPage () {
             return(
         <p className={s.tags}>{e}</p>
         )})
-
-    // function viewTags (){
-        // postInfo.tags.map((e) => {
-        //     console.log('1 ' + e);
-        //     return(
-        //     <p>1{e}</p>
-        // )})
-    // }
 
     function handleLike(){
         isLiked === true ? DeleteLike(_id).then(result => setCountLikes(result.likes.length)) && setIsLiked(false) :PutLike(_id).then(result => setCountLikes(result.likes.length)) && setIsLiked(true)
@@ -151,10 +144,11 @@ function PostPage () {
                     </div>
                 </div> 
                 <div>
-                {context._id === postContex.author._id ? <IconButton aria-label="add to favorites" onClick={() => {DeletePost(postContex._id)}}><DeleteForeverIcon/><p>Удалить пост</p></IconButton> : null}
+                {context._id === postContex.author._id ? <IconButton aria-label="add to favorites" onClick={() => {DeletePost(postContex._id); navigate('/')}}><DeleteForeverIcon/><p>Удалить пост</p></IconButton> : null}
                 {context._id === postContex.author._id ? <IconButton aria-label="Изменить пост"><ModalEdit dataPost={{...postContex}}/></IconButton> : null}
                 </div>
                 </div>
+                <p>Дата публикации: {dayjs(postContex.created_at).format('HH:MM DD.MM.YYYY')}</p>
                 <div className={s.postBtns}>
                 <IconButton className={s.IconLike} onClick={handleLike} aria-label="add to favorites">
                  {isLiked === false ? <FavoriteIcon/> : <FavoriteIcon className={s.userLiked}/>}

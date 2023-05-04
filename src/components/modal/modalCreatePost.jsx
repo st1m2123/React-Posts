@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import {CreatePost, SignIn} from '../api/api.js'
 import TextField from '@mui/material/TextField';
 import s from './modal.module.css'
+import { useNavigate } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar'
 
 const style = {
   position: 'absolute',
@@ -26,6 +28,8 @@ export default function BasicModal(modalOpen) {
   const handleClose = () => setOpen(false);
   const [userData, setUserData] = React.useState()
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const [postImage, setPostImage] = React.useState('');
 
   function onSubmit(data) {
     // console.log(data.tags.split(','));
@@ -40,8 +44,18 @@ export default function BasicModal(modalOpen) {
     CreatePost(dataPost).then(result => {
       console.log(result);
       handleClose();
+      navigate(`/news/${result._id}`);
     });
-    // { username: 'test', email: 'test', password: 'test' }
+  };
+
+  function handleChangePostImage(e) {
+    console.log(e.target.value);
+    if (e.target.value !== ''){
+      console.log("работает билять");
+      setPostImage(e.target.value);
+    } else {
+      setPostImage('https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg')
+    }
   };
 
   return (
@@ -53,11 +67,12 @@ export default function BasicModal(modalOpen) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className={s.contentBox} sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Создание нового поста
           </Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <Avatar sx={{ width: 200, height: 200, margin: 2 }} alt="Remy Sharp" src={postImage}/>
+          <form className={s.modalInputs} onSubmit={handleSubmit(onSubmit)}>
           <TextField
                 id="outlined-password-input"
                 label="Заголовок"
@@ -71,6 +86,7 @@ export default function BasicModal(modalOpen) {
                 type="text"
                 autoComplete="current-password"
                 {...register('image')}
+                onChange={handleChangePostImage}
               />
               <TextField
                 id="outlined-password-input"
@@ -86,7 +102,7 @@ export default function BasicModal(modalOpen) {
                 autoComplete="current-password"
                 {...register('tags')}
               />
-          <button type="submit">Создать</button>
+          <Button type="submit">Создать</Button>
           </form>
         </Box>
       </Modal>
