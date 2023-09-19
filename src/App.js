@@ -84,6 +84,7 @@ function App() {
     {/* <CardList/> */}
     {/* <PostPage/> */}
     <Routes>
+    <Route path='*' element={<NotFound/>}/>
       <Route path='/' element={localStorage.getItem('token') === null ? <NotFound/> : <><CardList/></>}/>
       <Route path='news/:_id' element={<PostPage/>}/>
       <Route path='login' element={<NotFound/>}/>

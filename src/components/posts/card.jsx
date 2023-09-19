@@ -34,7 +34,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard({Posts}) {
-    const {name,about, avatar, image, text, like, _id, likesInfo, idAuthor, tags} = Posts;
+    const {name,about, avatar, image, text, like, _id, likesInfo, idAuthor, tags, title} = Posts;
   const [expanded, setExpanded] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
   const [countLikes, setCountLikes] = React.useState(0);
@@ -83,6 +83,9 @@ export default function RecipeReviewCard({Posts}) {
       {tagMap}
       </div>
       <CardContent>
+      <Typography noWrap='false' variant="h6" color="text.secondary">
+          {title}
+        </Typography>
         <Typography noWrap='false' variant="body2" color="text.secondary">
           {text}
         </Typography>

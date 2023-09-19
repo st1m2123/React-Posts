@@ -68,7 +68,7 @@ export default function BasicModal(dataPost) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style}>s
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Редактирование поста
           </Typography>

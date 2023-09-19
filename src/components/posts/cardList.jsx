@@ -29,7 +29,7 @@ const CardList = () => {
     const renderPosts = posts.map((el) => {
         // console.log(posts);
         return (
-            <Card Posts={{ name: el.author.name, about: el.author.about, avatar: el.author.avatar, image: el.image, text: el.text, like: el.likes.length, _id: el._id, likesInfo: el.likes, idAuthor: el.author._id, tags: el.tags }} />
+            <Card Posts={{ name: el.author.name, about: el.author.about, avatar: el.author.avatar, image: el.image, text: el.text, like: el.likes.length, _id: el._id, likesInfo: el.likes, idAuthor: el.author._id, tags: el.tags, title: el.title}} />
         )
     });
 

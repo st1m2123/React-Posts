@@ -122,7 +122,6 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <Profile />
-      <MenuItem>Люимые посты</MenuItem>
       <MenuItem onClick={handleSignOut}>Выйти</MenuItem>
     </Menu>
   );
